@@ -16,12 +16,6 @@ class Dog
     @@all
   end 
 
-  def dogs 
-    Dog.all.select {|dog| dog.owner == self}   
-  end 
 
-  def buy_dog(name)
-    new_puppy = Dog.new(name, self)
-   end 
   # binding.pry
 end
