@@ -1,3 +1,4 @@
+require 'pry'
 class Owner
   
   OWNERS = []
@@ -10,7 +11,7 @@ class Owner
     OWNERS << self
     @species = "human"
     @name = name
-    @pets = {:dogs =>[], :cats => []}
+    @pets = {:dogs => [], :cats => []}
   end
   
   def say_species
@@ -34,6 +35,9 @@ class Owner
     Cat.all.select{|cat| cat.owner == self}
   end
 
+  def dogs 
+    Dog.all.select{|dog| dog.owner == self}
+  end
 
 
   def buy_dog(name)
@@ -41,17 +45,17 @@ class Owner
   end
 
   def buy_cat(name)
-    pets[:cat] << Cat.new(name, self)
+    pets[:cats] << Cat.new(name, self)
   end
 
   def walk_dogs
-    pets[:dogs].each do |dog|
-      dog.mood = "happy"
-    end
+    pets[:dogs].each{|dog| 
+    dog.mood = "happy"}
+    
   end
 
   def feed_cats
-    pets[:cats].each do |cat|
+    pets[:cats].map do |cat|
       cat.mood = "happy"
     end
   end
@@ -59,7 +63,7 @@ class Owner
 
  def sell_pets
     pets.each do |species, animals|
-      animals.each do |animal|
+      animals.map do |animal|
         animal.mood = "nervous"
       end
       animals.clear
@@ -67,7 +71,7 @@ class Owner
   end
 
   def list_pets
-    "I have #{pets[:dogs].count} dogs and #{pets[:cats].count} cats."
+    "I have #{pets[:dogs].count} dog(s), and #{pets[:cats].count} cat(s)."
   end
 
 
