@@ -8,6 +8,7 @@ class Owner
     @species = "human"
     @name = name
     @@all << self
+    @pets = {:dogs => [], :cats => []}
 
   end
 
@@ -25,6 +26,14 @@ class Owner
 
   def dogs
     Dog.all.select {|dog| dog.owner == self}
+  end
+
+  def buy_cat(name)
+    @pets [:cats] << Cat.new(name)
+  end
+
+  def buy_dog(name)
+    @pets [:dogs] << Dog.new(name)
   end
 
   def self.dogs
