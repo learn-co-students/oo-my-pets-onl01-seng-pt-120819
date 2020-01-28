@@ -1,6 +1,6 @@
 require 'pry'
 class Owner
-  attr_reader :species, :name
+  attr_reader :species, :name, :pets
 
   @@all = []
 
@@ -37,12 +37,35 @@ class Owner
   end
 
   def walk_dogs
-    self.dogs.each do |dogs|
+    self.dogs.each do |dog|
       dog.mood = "happy"
     end
     # @pets[:dogs].each do |dogs|
     #   dog.mood = "happy"
     # end
+  end
+
+  def feed_cats
+    self.cats.each do |cat|
+      cat.mood = "happy"
+    end
+  end
+
+  def sell_pets
+    pets = self.dogs + self.cats
+    pets.each do |pet|
+      pet.mood = "nervous"
+      pet.owner = nil
+
+    end
+    # self.dogs.clear
+    # self.cats.clear
+
+  end
+
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+
   end
 
   def self.dogs
