@@ -37,9 +37,12 @@ class Owner
   end
 
   def walk_dogs
-    @pets[:dogs].each do |dogs|
+    dogs.self.each do |dogs|
       dog.mood = "happy"
     end
+    # @pets[:dogs].each do |dogs|
+    #   dog.mood = "happy"
+    # end
   end
 
   def self.dogs
@@ -54,6 +57,8 @@ class Owner
   def self.reset_all
     @@all.clear
   end
+
+
 
 # binding.pry
 
