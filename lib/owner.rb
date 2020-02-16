@@ -28,7 +28,7 @@ class Owner
     @@all.clear
   end
   
-  def cats
-    Cats.all
+  def songs
+    Cats.all.select {|cat| cat.owner == self}
   end
 end
