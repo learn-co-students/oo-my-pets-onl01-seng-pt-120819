@@ -28,7 +28,28 @@ class Owner
     @@all.clear
   end
   
-  def songs
-    Cats.all.select {|cat| cat.owner == self}
+  def cats
+    allcats=[]
+    Cat.all.each do |cat|
+      if cat.owner == self
+        allcats << cat
+      end
+    end
+    allcats
   end
+  
+  def dogs
+    alldogs=[]
+    Dog.all.each do |dog|
+      if dog.owner == self
+        alldogs << dog
+      end
+    end
+    alldogs
+  end
+  
+  def buy_cat(catname)
+    Cat.name=catname
+  end
+    
 end
